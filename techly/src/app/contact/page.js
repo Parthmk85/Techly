@@ -241,13 +241,16 @@ export default function ContactPage() {
 
       {/* Map Section (Placeholder) */}
       <section className="h-96 bg-gray-200">
-        <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-blue-100 to-blue-200">
-          <div className="text-center">
-            <div className="text-6xl mb-4">🗺️</div>
-            <p className="text-xl text-gray-700 font-semibold">Map Location</p>
-            <p className="text-gray-600">123 Tech Street, Digital City</p>
-          </div>
-        </div>
+        <iframe
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          scrolling="no"
+          marginHeight="0"
+          marginWidth="0"
+          src="https://maps.google.com/maps?q=akshardham%202%20street%20no%208%20kaliyabid%20bhavnagar&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          title="Techly Location"
+        ></iframe>
       </section>
     </div>
   );
