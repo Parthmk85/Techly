@@ -21,13 +21,13 @@ export default function Home() {
       icon: '☁️',
       title: 'Cloud Solutions',
       description: 'Scalable cloud infrastructure and migration services for your business growth.',
-      comingSoon: true
+
     },
     {
       icon: '🔒',
       title: 'Cybersecurity',
       description: 'Comprehensive security solutions to protect your digital assets and data.',
-      comingSoon: true
+
     },
     {
       icon: '📱',
@@ -160,14 +160,7 @@ export default function Home() {
               <p className="text-gray-600 leading-relaxed text-center text-lg mb-6">
                 {services[currentServiceIndex].description}
               </p>
-              <div className="flex justify-center mt-4">
-                <div className="flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform duration-300">
-                  Learn More
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
-              </div>
+
             </div>
 
             {/* Left Arrow Button */}
@@ -229,12 +222,7 @@ export default function Home() {
                   )}
                 </div>
                 <p className="text-gray-600 leading-relaxed">{service.description}</p>
-                <div className="mt-4 flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform duration-300">
-                  Learn More
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
+
               </div>
             ))}
           </div>

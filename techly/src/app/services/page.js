@@ -32,7 +32,7 @@ export default function ServicesPage() {
         'Cloud Security'
       ],
       color: 'from-cyan-500 to-cyan-700',
-      comingSoon: true
+
     },
     {
       icon: '🔒',
@@ -47,7 +47,7 @@ export default function ServicesPage() {
         'Incident Response'
       ],
       color: 'from-red-500 to-red-700',
-      comingSoon: true
+
     },
     {
       icon: '📱',
@@ -135,61 +135,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="section-padding bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="card group"
-                style={{animationDelay: `${index * 0.1}s`}}
-              >
-                <div className="flex items-start space-x-4 mb-6">
-                  <div className={`w-16 h-16 bg-linear-to-br ${service.color} rounded-xl flex items-center justify-center text-3xl shrink-0 transform group-hover:scale-110 transition-transform duration-300`}>
-                    {service.icon}
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-2xl font-bold text-gray-800">{service.title}</h3>
-                      {service.comingSoon && (
-                        <span className="px-3 py-1 bg-blue-100 text-blue-600 text-sm font-semibold rounded-full">
-                          Coming Soon
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-gray-600">{service.description}</p>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <h4 className="font-semibold text-gray-800 mb-3">Key Features:</h4>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-gray-600">
-                        <svg className="w-5 h-5 text-blue-600 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-6 pt-6 border-t border-gray-200">
-                  <button className="text-blue-600 font-semibold flex items-center group-hover:translate-x-2 transition-transform duration-300">
-                    Learn More
-                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Process Section */}
       <section className="section-padding bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -253,6 +198,54 @@ export default function ServicesPage() {
                 </>
               );
             })()}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="card group"
+                style={{animationDelay: `${index * 0.1}s`}}
+              >
+                <div className="flex items-start space-x-4 mb-6">
+                  <div className={`w-16 h-16 bg-linear-to-br ${service.color} rounded-xl flex items-center justify-center text-3xl shrink-0 transform group-hover:scale-110 transition-transform duration-300`}>
+                    {service.icon}
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <h3 className="text-2xl font-bold text-gray-800">{service.title}</h3>
+                      {service.comingSoon && (
+                        <span className="px-3 py-1 bg-blue-100 text-blue-600 text-sm font-semibold rounded-full">
+                          Coming Soon
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-gray-600">{service.description}</p>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-gray-800 mb-3">Key Features:</h4>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-gray-600">
+                        <svg className="w-5 h-5 text-blue-600 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+
+              </div>
+            ))}
           </div>
         </div>
       </section>
