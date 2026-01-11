@@ -18,6 +18,9 @@ export const metadata = {
     description: "Techly is a Bhavnagar based web app development company helping businesses go online with modern technology.",
     type: "website",
   },
+  verification: {
+    google: "google5671e6dd9229d9da",
+  },
 };
 
 export default function RootLayout({ children }) {
