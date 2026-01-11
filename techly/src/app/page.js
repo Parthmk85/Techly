@@ -243,7 +243,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold">
-                Why Choose <span className="gradient-text">Techly</span>?
+                Why Choose <span className="gradient-text">Tech-ly</span>?
               </h2>
               <p className="text-xl text-gray-600">
                 We're not just another IT company. We're your technology partner committed to your success.
@@ -295,7 +295,7 @@ export default function Home() {
             Ready to Transform Your Business?
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Join hundreds of satisfied clients who have revolutionized their operations with Techly
+            Join hundreds of satisfied clients who have revolutionized their operations with Tech-ly
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">

@@ -249,7 +249,7 @@ export default function ContactPage() {
           marginHeight="0"
           marginWidth="0"
           src="https://maps.google.com/maps?q=akshardham%202%20street%20no%208%20kaliyabid%20bhavnagar&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          title="Techly Location"
+          title="Tech-ly Location"
         ></iframe>
       </section>
     </div>

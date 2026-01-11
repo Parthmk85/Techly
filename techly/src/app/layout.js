@@ -9,12 +9,12 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Techly - Innovative IT Solutions & Services",
-  description: "Transform your business with Techly's cutting-edge IT solutions. We provide web development, cloud services, cybersecurity, and digital transformation services.",
+  title: "Tech-ly - Innovative IT Solutions & Services",
+  description: "Transform your business with Tech-ly's cutting-edge IT solutions. We provide web development, cloud services, cybersecurity, and digital transformation services.",
   keywords: "IT solutions, web development, cloud services, cybersecurity, digital transformation, software development",
-  authors: [{ name: "Techly Team" }],
+  authors: [{ name: "Tech-ly Team" }],
   openGraph: {
-    title: "Techly - Innovative IT Solutions & Services",
+    title: "Tech-ly - Innovative IT Solutions & Services",
     description: "Transform your business with cutting-edge IT solutions",
     type: "website",
   },

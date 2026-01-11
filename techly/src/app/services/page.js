@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Our Services - Techly',
+  title: 'Our Services - Tech-ly',
   description: 'Explore our comprehensive IT services including web development, cloud solutions, cybersecurity, and more.',
 };
 

@@ -36,7 +36,7 @@ export default function Navbar() {
             <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
               <span className="text-white font-bold text-xl">T</span>
             </div>
-            <span className="text-2xl font-bold gradient-text">Techly</span>
+            <span className="text-2xl font-bold gradient-text">Tech-ly</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -97,7 +97,7 @@ export default function Navbar() {
                 <div className="w-8 h-8 bg-linear-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">T</span>
                 </div>
-                <span className="text-xl font-bold gradient-text">Techly</span>
+                <span className="text-xl font-bold gradient-text">Tech-ly</span>
               </div>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
