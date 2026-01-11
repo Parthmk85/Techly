@@ -9,13 +9,13 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Tech-ly - Innovative IT Solutions & Services",
-  description: "Transform your business with Tech-ly's cutting-edge IT solutions. We provide web development, cloud services, cybersecurity, and digital transformation services.",
+  title: "Techly – Web App Development Company in Bhavnagar",
+  description: "Techly is a Bhavnagar based web app development company helping businesses go online with modern technology.",
   keywords: "IT solutions, web development, cloud services, cybersecurity, digital transformation, software development",
-  authors: [{ name: "Tech-ly Team" }],
+  authors: [{ name: "Techly Team" }],
   openGraph: {
-    title: "Tech-ly - Innovative IT Solutions & Services",
-    description: "Transform your business with cutting-edge IT solutions",
+    title: "Techly – Web App Development Company in Bhavnagar",
+    description: "Techly is a Bhavnagar based web app development company helping businesses go online with modern technology.",
     type: "website",
   },
 };

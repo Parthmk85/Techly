@@ -13,7 +13,7 @@ export default function Footer() {
               <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
                 <span className="text-blue-600 font-bold text-xl">T</span>
               </div>
-              <span className="text-2xl font-bold">Tech-ly</span>
+              <span className="text-2xl font-bold">Techly</span>
             </div>
             <p className="text-gray-300 mb-4 max-w-md">
               Empowering businesses with cutting-edge IT solutions. We transform ideas into digital reality.
@@ -62,7 +62,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 mt-8 pt-8 text-center text-gray-300">
-          <p>&copy; {currentYear} Tech-ly. All rights reserved. Built by Parth Patel</p>
+          <p>&copy; {currentYear} Techly. All rights reserved. Built by Parth Patel</p>
         </div>
       </div>
     </footer>

@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'About Us - Tech-ly',
-  description: 'Learn about Tech-ly, our mission, values, and the team behind innovative IT solutions.',
+  title: 'About Us - Techly',
+  description: 'Learn about Techly, our mission, values, and the team behind innovative IT solutions.',
 };
 
 export default function AboutPage() {
@@ -48,7 +48,7 @@ export default function AboutPage() {
       <section className="bg-linear-to-br from-blue-600 to-blue-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
-            About Tech-ly
+            About Techly
           </h1>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
             Pioneering digital transformation since 2009
@@ -65,7 +65,7 @@ export default function AboutPage() {
                 Our <span className="gradient-text">Story</span>
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Founded in 2009, Tech-ly began with a simple mission: to help businesses harness the power 
+                Founded in 2009, Techly began with a simple mission: to help businesses harness the power 
                 of technology to achieve their goals. What started as a small team of passionate developers 
                 has grown into a global IT solutions provider.
               </p>
@@ -165,7 +165,7 @@ export default function AboutPage() {
               Meet Our <span className="gradient-text">Team</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              The talented people behind Tech-ly's success
+              The talented people behind Techly's success
             </p>
           </div>
 
