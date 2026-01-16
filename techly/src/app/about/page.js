@@ -5,10 +5,10 @@ export const metadata = {
 
 export default function AboutPage() {
   const team = [
-    { name: 'Parth Patel', role: 'CEO & Founder', emoji: '👨‍💼' },
-    { name: 'Utsav Jetani', role: 'CTO', emoji: '👩‍💻' },
-    { name: 'Kaushik Baraiya', role: 'Lead Developer', emoji: '👨‍💻' },
-    { name: 'Dhruve Balar', role: 'UX Designer', emoji: '👩‍🎨' }
+    { name: 'Parth Patel', role: 'CEO & Founder', emoji: '👨‍💼', portfolio: 'https://parthpatel2209.vercel.app/' },
+    { name: 'Utsav Jetani', role: 'CTO', emoji: '👩‍💻', portfolio: '#' },
+    { name: 'Kaushik Baraiya', role: 'Lead Developer', emoji: '👨‍💻', portfolio: '#' },
+    { name: 'Dhruve Balar', role: 'UX Designer', emoji: '👩‍🎨', portfolio: '#' }
   ];
 
   const values = [
@@ -176,7 +176,15 @@ export default function AboutPage() {
                   {member.emoji}
                 </div>
                 <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                <p className="text-blue-600 font-semibold">{member.role}</p>
+                <p className="text-blue-600 font-semibold mb-4">{member.role}</p>
+                <a 
+                  href={member.portfolio}
+                  target={member.portfolio.startsWith('http') ? "_blank" : "_self"}
+                  rel={member.portfolio.startsWith('http') ? "noopener noreferrer" : ""}
+                  className="inline-block px-6 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                >
+                  View Portfolio
+                </a>
               </div>
             ))}
           </div>
