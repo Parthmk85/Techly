@@ -1,4 +1,6 @@
+'use client';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,7 +10,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="col-span-1 md:col-span-2">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="col-span-1 md:col-span-2"
+          >
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
                 <span className="text-blue-600 font-bold text-xl">T</span>
@@ -18,11 +25,14 @@ export default function Footer() {
             <p className="text-gray-300 mb-4 max-w-md">
               Empowering businesses with cutting-edge IT solutions. We transform ideas into digital reality.
             </p>
-
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><Link href="/" className="text-gray-300 hover:text-white transition-colors">Home</Link></li>
@@ -30,10 +40,14 @@ export default function Footer() {
               <li><Link href="/about" className="text-gray-300 hover:text-white transition-colors">About Us</Link></li>
               <li><Link href="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2 text-gray-300">
               <li className="flex items-start">
@@ -58,12 +72,17 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="border-t border-white/10 mt-8 pt-8 text-center text-gray-300">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="border-t border-white/10 mt-8 pt-8 text-center text-gray-300"
+        >
           <p>&copy; {currentYear} Techly. All rights reserved. Built by Parth Patel</p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

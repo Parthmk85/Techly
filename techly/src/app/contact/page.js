@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -86,12 +87,22 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="bg-linear-to-br from-blue-600 to-blue-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
+          <motion.h1 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-6xl font-bold mb-6"
+          >
             Get in Touch
-          </h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90"
+          >
             Let's discuss how we can help transform your business
-          </p>
+          </motion.p>
         </div>
       </section>
 
@@ -100,7 +111,12 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Information */}
-            <div className="space-y-8">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="space-y-8"
+            >
               <div>
                 <h2 className="text-3xl font-bold mb-6">
                   Contact <span className="gradient-text">Information</span>
@@ -111,7 +127,13 @@ export default function ContactPage() {
               </div>
 
               {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-start space-x-4">
+                <motion.div 
+                  key={index} 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-start space-x-4"
+                >
                   <div className="w-12 h-12 bg-blue-100 rounded-lg shrink-0 flex items-center justify-center text-2xl">
                     {info.icon}
                   </div>
@@ -121,24 +143,33 @@ export default function ContactPage() {
                       <p key={idx} className="text-gray-600">{detail}</p>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               ))}
 
-            </div>
+            </motion.div>
 
             {/* Contact Form */}
-            <div className="lg:col-span-2">
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="lg:col-span-2"
+            >
               <div className="card">
                 <h2 className="text-3xl font-bold mb-6">Send us a Message</h2>
 
                 {status.message && (
-                  <div className={`mb-6 p-4 rounded-lg ${
-                    status.type === 'success' 
-                      ? 'bg-green-100 text-green-800 border border-green-200' 
-                      : 'bg-red-100 text-red-800 border border-red-200'
-                  }`}>
+                  <motion.div 
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    className={`mb-6 p-4 rounded-lg ${
+                      status.type === 'success' 
+                        ? 'bg-green-100 text-green-800 border border-green-200' 
+                        : 'bg-red-100 text-red-800 border border-red-200'
+                    }`}
+                  >
                     {status.message}
-                  </div>
+                  </motion.div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -225,22 +256,29 @@ export default function ContactPage() {
                     ></textarea>
                   </div>
 
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={isSubmitting}
                     className="btn-primary w-full text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Sending...' : 'Send Message'}
-                  </button>
+                  </motion.button>
                 </form>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Map Section (Placeholder) */}
-      <section className="h-96 bg-gray-200">
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="h-96 bg-gray-200"
+      >
         <iframe
           width="100%"
           height="100%"
@@ -251,7 +289,7 @@ export default function ContactPage() {
           src="https://maps.google.com/maps?q=akshardham%202%20street%20no%208%20kaliyabid%20bhavnagar&t=&z=13&ie=UTF8&iwloc=&output=embed"
           title="Tech-ly Location"
         ></iframe>
-      </section>
+      </motion.section>
     </div>
   );
 }

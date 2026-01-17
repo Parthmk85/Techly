@@ -1,15 +1,10 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function Home() {
-  const [isVisible, setIsVisible] = useState(false);
   const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   const services = [
     {
@@ -53,27 +48,62 @@ export default function Home() {
     { number: '15+', label: 'Years Experience' }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-br from-blue-50 to-white pt-20">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float" style={{animationDelay: '2s'}}></div>
-          <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float" style={{animationDelay: '4s'}}></div>
+          <motion.div 
+            animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70"
+          ></motion.div>
+          <motion.div 
+            animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute top-40 right-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70"
+          ></motion.div>
+          <motion.div 
+            animate={{ x: [0, 20, 0], y: [0, 10, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute -bottom-8 left-1/2 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70"
+          ></motion.div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
-            <div className={`space-y-8 ${isVisible ? 'animate-slide-left' : 'opacity-0'}`}>
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="space-y-8"
+            >
               <div className="inline-block">
                 <span className="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold">
                   🚀 Welcome to the Future of IT
                 </span>
               </div>
-<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Techly – <span className="gradient-text">Go Online With Technology</span>
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -81,69 +111,118 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact">
-                  <button className="btn-primary text-lg px-8 py-4">
+                  <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="btn-primary text-lg px-8 py-4"
+                  >
                     Get Started Today
-                  </button>
+                  </motion.button>
                 </Link>
                 <Link href="/services">
-                  <button className="btn-secondary text-lg px-8 py-4">
+                  <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="btn-secondary text-lg px-8 py-4"
+                  >
                     Explore Services
-                  </button>
+                  </motion.button>
                 </Link>
               </div>
 
               {/* Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8">
                 {stats.map((stat, index) => (
-                  <div key={index} className="text-center">
+                  <motion.div 
+                    key={index} 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 + index * 0.1 }}
+                    className="text-center"
+                  >
                     <div className="text-3xl font-bold gradient-text">{stat.number}</div>
                     <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Content - Illustration */}
-            <div className={`relative ${isVisible ? 'animate-slide-right' : 'opacity-0'}`}>
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              className="relative"
+            >
               <div className="relative w-full h-96 lg:h-[500px]">
-                <div className="absolute inset-0 bg-linear-to-br from-blue-600 to-blue-800 rounded-3xl transform rotate-3 opacity-20"></div>
-                <div className="absolute inset-0 bg-linear-to-br from-blue-500 to-blue-700 rounded-3xl transform -rotate-3 opacity-30"></div>
-                <div className="relative h-full bg-white rounded-3xl shadow-2xl p-8 flex items-center justify-center">
+                <motion.div 
+                  animate={{ rotate: [3, 6, 3] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 bg-linear-to-br from-blue-600 to-blue-800 rounded-3xl opacity-20"
+                ></motion.div>
+                <motion.div 
+                  animate={{ rotate: [-3, -6, -3] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 bg-linear-to-br from-blue-500 to-blue-700 rounded-3xl opacity-30"
+                ></motion.div>
+                <motion.div 
+                  whileHover={{ scale: 1.02 }}
+                  className="relative h-full bg-white rounded-3xl shadow-2xl p-8 flex items-center justify-center transform transition-transform"
+                >
                   <div className="text-center space-y-4">
-                    <div className="text-8xl animate-float">💡</div>
+                    <motion.div 
+                      animate={{ y: [0, -15, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      className="text-8xl"
+                    >💡</motion.div>
                     <h3 className="text-2xl font-bold text-gray-800">Innovation Meets Excellence</h3>
                     <p className="text-gray-600">Building tomorrow's technology today</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <motion.div 
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
           <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
-        </div>
+        </motion.div>
       </section>
 
       {/* Services Section */}
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Our <span className="gradient-text">Services</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Comprehensive IT solutions tailored to your business needs
             </p>
-          </div>
+          </motion.div>
 
           {/* Mobile Carousel - Only visible on mobile */}
           <div className="md:hidden relative max-w-2xl mx-auto">
             {/* Current Service Card */}
-            <div className="card group cursor-pointer min-h-[400px] flex flex-col justify-center">
+            <motion.div 
+              key={currentServiceIndex}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+              className="card group cursor-pointer min-h-[400px] flex flex-col justify-center"
+            >
               <div className="text-6xl mb-6 text-center transform group-hover:scale-110 transition-transform duration-300">
                 {services[currentServiceIndex].icon}
               </div>
@@ -158,8 +237,7 @@ export default function Home() {
               <p className="text-gray-600 leading-relaxed text-center text-lg mb-6">
                 {services[currentServiceIndex].description}
               </p>
-
-            </div>
+            </motion.div>
 
             {/* Left Arrow Button */}
             <button
@@ -201,12 +279,19 @@ export default function Home() {
           </div>
 
           {/* Desktop Grid - Only visible on tablet and above */}
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            margin="-100px"
+            className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {services.map((service, index) => (
-              <div
+              <motion.div
                 key={index}
+                variants={itemVariants}
+                whileHover={{ y: -10 }}
                 className="card group cursor-pointer"
-                style={{animationDelay: `${index * 0.1}s`}}
               >
                 <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
                   {service.icon}
@@ -220,18 +305,26 @@ export default function Home() {
                   )}
                 </div>
                 <p className="text-gray-600 leading-relaxed">{service.description}</p>
-
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="text-center mt-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="text-center mt-12"
+          >
             <Link href="/services">
-              <button className="btn-primary text-lg px-8 py-4">
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn-primary text-lg px-8 py-4"
+              >
                 View All Services
-              </button>
+              </motion.button>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -239,7 +332,12 @@ export default function Home() {
       <section className="section-padding bg-linear-to-br from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
               <h2 className="text-4xl md:text-5xl font-bold">
                 Why Choose <span className="gradient-text">Techly</span>?
               </h2>
@@ -253,7 +351,13 @@ export default function Home() {
                   { title: 'Proven Track Record', desc: 'Successfully delivered 500+ projects worldwide' },
                   { title: 'Cutting-Edge Tech', desc: 'Always using the latest and most efficient technologies' }
                 ].map((item, index) => (
-                  <div key={index} className="flex items-start space-x-4 p-4 rounded-lg hover:bg-white transition-colors">
+                  <motion.div 
+                    key={index} 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-start space-x-4 p-4 rounded-lg hover:bg-white transition-colors"
+                  >
                     <div className="w-12 h-12 bg-blue-600 rounded-lg shrink-0 flex items-center justify-center text-white font-bold text-xl">
                       ✓
                     </div>
@@ -261,34 +365,52 @@ export default function Home() {
                       <h3 className="text-xl font-bold text-gray-800">{item.title}</h3>
                       <p className="text-gray-600">{item.desc}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
-            <div className="relative">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
               <div className="card p-8 space-y-6">
                 <div className="text-center">
-                  <div className="text-6xl mb-4">🎯</div>
+                  <motion.div 
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="text-6xl mb-4"
+                  >🎯</motion.div>
                   <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
                   <p className="text-gray-600 mb-6">
                     Let's discuss how we can help transform your business with innovative IT solutions.
                   </p>
                   <Link href="/contact">
-                    <button className="btn-primary w-full text-lg py-4">
+                    <motion.button 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="btn-primary w-full text-lg py-4"
+                    >
                       Schedule a Consultation
-                    </button>
+                    </motion.button>
                   </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="section-padding bg-linear-to-br from-blue-600 to-blue-800 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Transform Your Business?
           </h2>
@@ -297,17 +419,25 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
-              <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg">
+              <motion.button 
+                whileHover={{ scale: 1.05, backgroundColor: "#f3f4f6" }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg"
+              >
                 Contact Us Now
-              </button>
+              </motion.button>
             </Link>
             <Link href="/about">
-              <button className="border-2 border-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors">
+              <motion.button 
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
+                whileTap={{ scale: 0.95 }}
+                className="border-2 border-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
+              >
                 Learn More About Us
-              </button>
+              </motion.button>
             </Link>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

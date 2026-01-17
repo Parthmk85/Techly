@@ -1,7 +1,5 @@
-export const metadata = {
-  title: 'Our Services - Tech-ly',
-  description: 'Explore our comprehensive IT services including web development, cloud solutions, cybersecurity, and more.',
-};
+'use client';
+import { motion } from 'framer-motion';
 
 export default function ServicesPage() {
   const services = [
@@ -121,31 +119,63 @@ export default function ServicesPage() {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
+
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="bg-linear-to-br from-blue-600 to-blue-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
+          <motion.h1 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-6xl font-bold mb-6"
+          >
             Our Services
-          </h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90"
+          >
             Comprehensive IT solutions designed to accelerate your digital transformation
-          </p>
+          </motion.p>
         </div>
       </section>
 
       {/* Process Section */}
       <section className="section-padding bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-center mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Our <span className="gradient-text">Process</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               A proven methodology that ensures project success
             </p>
-          </div>
+          </motion.div>
 
           <div className="relative">
             {/* Shared Process Data */}
@@ -162,13 +192,19 @@ export default function ServicesPage() {
                   {/* Desktop View (Grid) - Hidden on Mobile */}
                   <div className="hidden md:grid grid-cols-4 gap-8">
                     {processSteps.map((item, index) => (
-                      <div key={index} className="text-center group hover:-translate-y-2 transition-transform duration-300">
+                      <motion.div 
+                        key={index} 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="text-center group hover:-translate-y-2 transition-transform duration-300"
+                      >
                         <div className="w-20 h-20 bg-linear-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 shadow-lg group-hover:shadow-blue-200">
                           {item.step}
                         </div>
                         <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                         <p className="text-gray-600">{item.desc}</p>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
 
@@ -178,7 +214,12 @@ export default function ServicesPage() {
                     <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-blue-200"></div>
 
                     {processSteps.map((item, index) => (
-                      <div key={index} className={`flex items-center justify-between w-full mb-12 relative ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+                      <motion.div 
+                        key={index} 
+                        initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        className={`flex items-center justify-between w-full mb-12 relative ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                      >
                         {/* Content Side */}
                         <div className={`w-[42%] ${index % 2 === 0 ? 'text-right pr-4' : 'text-left pl-4'}`}>
                           <h3 className="text-lg font-bold text-gray-800">{item.title}</h3>
@@ -192,7 +233,7 @@ export default function ServicesPage() {
 
                         {/* Empty Side for Balance */}
                         <div className="w-[42%]"></div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </>
@@ -205,12 +246,17 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          >
             {services.map((service, index) => (
-              <div
+              <motion.div
                 key={index}
+                variants={itemVariants}
                 className="card group"
-                style={{animationDelay: `${index * 0.1}s`}}
               >
                 <div className="flex items-start space-x-4 mb-6">
                   <div className={`w-16 h-16 bg-linear-to-br ${service.color} rounded-xl flex items-center justify-center text-3xl shrink-0 transform group-hover:scale-110 transition-transform duration-300`}>
@@ -242,17 +288,20 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                 </div>
-
-
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="section-padding bg-linear-to-br from-blue-600 to-blue-800 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Start Your Project?
           </h2>
@@ -260,11 +309,15 @@ export default function ServicesPage() {
             Let's discuss how our services can help achieve your business goals
           </p>
           <a href="/contact">
-            <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg">
+            <motion.button 
+              whileHover={{ scale: 1.05, backgroundColor: "#f3f4f6" }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg"
+            >
               Get in Touch
-            </button>
+            </motion.button>
           </a>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
